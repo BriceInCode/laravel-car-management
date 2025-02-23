@@ -44,22 +44,22 @@ return [
 
         'mysql' => [
             'driver' => 'mysql',
-            'url' => env('DB_URL'),
-            'host' => env('DB_HOST', '127.0.0.1'),
-            'port' => env('DB_PORT', '3306'),
-            'database' => env('DB_DATABASE', 'laravel'),
-            'username' => env('DB_USERNAME', 'root'),
-            'password' => env('DB_PASSWORD', ''),
-            'unix_socket' => env('DB_SOCKET', ''),
-            'charset' => env('DB_CHARSET', 'utf8mb4'),
-            'collation' => env('DB_COLLATION', 'utf8mb4_unicode_ci'),
-            'prefix' => '',
-            'prefix_indexes' => true,
-            'strict' => true,
-            'engine' => null,
+            'url' => env('DB_URL'), // Si vous utilisez une URL complète, assurez-vous de la définir dans votre fichier .env
+            'host' => env('DB_HOST', '127.0.0.1'), // Hôte de la base de données, par défaut localhost
+            'port' => env('DB_PORT', '3306'), // Port de connexion, par défaut 3306
+            'database' => env('DB_DATABASE', 'laravel'), // Nom de la base de données
+            'username' => env('DB_USERNAME', 'root'), // Nom d'utilisateur de la base de données
+            'password' => env('DB_PASSWORD', ''), // Mot de passe de la base de données
+            'unix_socket' => env('DB_SOCKET', ''), // Si vous utilisez un socket Unix, définissez-le ici (sinon laissez vide)
+            'charset' => env('DB_CHARSET', 'utf8mb4'), // Jeu de caractères utilisé
+            'collation' => env('DB_COLLATION', 'utf8mb4_unicode_ci'), // Collation par défaut
+            'prefix' => '', // Préfixe des tables (si vous en avez besoin)
+            'prefix_indexes' => true, // Pour ajouter des index dans les préfixes des noms des tables
+            'strict' => true, // Pour activer les vérifications strictes
+            'engine' => null, // Spécifiez un moteur de base de données si nécessaire, sinon laissez null
             'options' => extension_loaded('pdo_mysql') ? array_filter([
-                PDO::MYSQL_ATTR_SSL_CA => env('MYSQL_ATTR_SSL_CA'),
-            ]) : [],
+                PDO::MYSQL_ATTR_SSL_CA => env('MYSQL_ATTR_SSL_CA'), // SSL CA si vous utilisez une connexion sécurisée
+            ]) : [], // Options supplémentaires de la connexion PDO si nécessaire
         ],
 
         'mariadb' => [
@@ -147,7 +147,7 @@ return [
 
         'options' => [
             'cluster' => env('REDIS_CLUSTER', 'redis'),
-            'prefix' => env('REDIS_PREFIX', Str::slug(env('APP_NAME', 'laravel'), '_').'_database_'),
+            'prefix' => env('REDIS_PREFIX', Str::slug(env('APP_NAME', 'laravel'), '_') . '_database_'),
         ],
 
         'default' => [
